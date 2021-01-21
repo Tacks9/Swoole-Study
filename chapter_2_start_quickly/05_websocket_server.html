@@ -1,0 +1,41 @@
+<!-- /*
+ * @Descripttion: WebSocket客户端-浏览器
+ * @Author: tacks321@qq.com
+ * @Date: 2021-01-21 11:42:02
+ * @LastEditTime: 2021-01-21 11:42:03
+ */ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Client</title>
+</head>
+<body>
+<script>
+    window.onload = function () {
+        var wsServer = 'ws://127.0.0.1:9501';
+        // 实例化
+        var websocket = new WebSocket(wsServer);
+
+        // open 监听开启事件
+        websocket.onopen = function (evt) {
+            console.log("Connected to WebSocket server.");
+        };
+
+        // close 监听关闭事件
+        websocket.onclose = function (evt) {
+            console.log("Disconnected");
+        };
+
+        // message 监听信息事件
+        websocket.onmessage = function (evt) {
+            console.log('Retrieved data from server: ' + evt.data);
+        };
+
+        // error 监听错误事件
+        websocket.onerror = function (evt, e) {
+            console.log('Error occured: ' + evt.data);
+        };
+}
+</script>
